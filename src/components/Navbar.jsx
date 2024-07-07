@@ -4,6 +4,7 @@ import image2 from "../assets/image/image2.svg";
 import image3 from "../assets/image/image3.svg";
 import downArrow from "../assets/image/down-arrow.png";
 import { list } from "postcss";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
@@ -15,7 +16,9 @@ const Navbar = () => {
               src={image3}
               className="shrink-0 aspect-[1.12] fill-orange-500 w-[54px]"
             />
-            <div className="text-3xl font-bold">Maukal</div>
+            <Link to="/">
+              <div className="text-3xl font-bold">Maukal</div>
+            </Link>
           </div>
           <div className="flex gap-2 border-[1px] py-2 pl-3 border-black px-2  rounded-full ">
             <input
