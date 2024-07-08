@@ -4,7 +4,7 @@ import googleplay from "../assets/image/googleplay.png";
 const Footer = () => {
   return (
     <div className="bg-[#FE7F0A] bg-opacity-20">
-      <div className="px-11 flex justify-between pt-11 text-[#191B1F] text-opacity-60">
+      <div className="px-11 grid grid-cols-2 space-y-5 md:space-y-0 md:grid-cols-5 justify-between pt-11 text-[#191B1F] text-opacity-60">
         <div className="flex flex-col gap-3">
           <p className="font-semibold text-lg text-black">Contact us</p>
           <p className="">No 123, Ikeja, Lagos State, Nigeria.</p>
@@ -35,7 +35,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-3">
+        <div className="hidden md:flex flex-col items-center justify-center gap-3 md:items-start md:justify-start">
           <img src={appstore} className="w-16" />
           <img src={googleplay} className="w-16" />
         </div>

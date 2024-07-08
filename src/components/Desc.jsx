@@ -1,7 +1,7 @@
 const Desc = () => {
   return (
     <div className="px-11">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row items-center justify-between">
         <div className="flex flex-col items-center justify-center">
           <svg
             width="58"

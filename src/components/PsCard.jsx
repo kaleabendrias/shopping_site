@@ -1,9 +1,8 @@
-import React from "react";
 import image6 from "../assets/image/image6.png";
 const PsCard = () => {
   return (
     <div className="px-11 py-10">
-      <div className="bg-black flex px-5 pt-6 justify-between">
+      <div className="bg-black flex flex-col md:flex-row px-5 pt-6 justify-between">
         <div className="pl-10 text-white flex flex-col justify-center items-start gap-4 py-5">
           <div className="text-4xl">
             <p>PS 5 SONY DELIVERS TO YOU</p>

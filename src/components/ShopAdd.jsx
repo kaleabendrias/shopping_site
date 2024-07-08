@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import image5 from "../assets/image/image5.png";
 import "./shopadd.css";
 const ShopAdd = () => {
@@ -13,17 +13,23 @@ const ShopAdd = () => {
           <p>The Leading Online Store</p>
           <p>With The Largest Product</p>
         </div>
-        <div className="flex gap-3">
-          <p className="text-3xl text-white">Frequently Searched:</p>
-          <button className="text-white border-[1px] px-3 py-1 rounded-full">
-            Rechargeable Fan
-          </button>
-          <button className="text-white border-[1px] px-3 py-1 rounded-full">
-            iPhone 15 pro max
-          </button>
-          <button className="text-white border-[1px] px-3 py-1 rounded-full">
-            Lexus Es 350
-          </button>
+        <div className="flex flex-col md:flex-row gap-3">
+          <p className="text-xl md:text-3xl text-white">Frequently Searched:</p>
+          <Link to="/checkout">
+            <button className="text-white border-[1px] px-2 py-0.5 md:px-3 md:py-1 rounded-full">
+              Rechargeable Fan
+            </button>
+          </Link>
+          <Link to="/checkout">
+            <button className="text-white border-[1px] px-2 py-0.5 md:px-3 md:py-1 rounded-full">
+              iPhone 15 Pro Max
+            </button>
+          </Link>
+          <Link to="/checkout">
+            <button className="text-white border-[1px] px-2 py-0.5 md:px-3 md:py-1 rounded-full">
+              Lexus ES 350
+            </button>
+          </Link>
         </div>
       </div>
     </div>

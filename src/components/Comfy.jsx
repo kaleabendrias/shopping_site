@@ -1,4 +1,3 @@
-import React from "react";
 import man from "../assets/image/man.png";
 import woman from "../assets/image/woman.png";
 import purse from "../assets/image/purse.png";
@@ -6,8 +5,8 @@ import formen from "../assets/image/formen.png";
 const Comfy = () => {
   return (
     <div className="px-11 mb-10 text-[#191B1F]">
-      <div className="flex justify-between">
-        <div className="w-[49.5%] bg-[#FFACAC] px-3 flex flex-col  pr-1">
+      <div className="flex flex-col md:flex-row justify-between">
+        <div className="md:w-[49.5%] bg-[#FFACAC] px-3 flex flex-col  pr-1">
           <p className="px-2 text-5xl pt-10 pb-3 text-[#424344]">
             Comfy styles for her
           </p>
@@ -51,7 +50,7 @@ const Comfy = () => {
             </div>
           </div>
         </div>
-        <div className="w-[49.5%] bg-[#EDEDED] px-3 flex flex-col  pr-1">
+        <div className="mt-4 md:mt-0 md:w-[49.5%] bg-[#EDEDED] px-3 flex flex-col  pr-1">
           <p className="px-2 text-5xl pt-10 pb-3 text-[#424344]">
             Comfy styles for him
           </p>
