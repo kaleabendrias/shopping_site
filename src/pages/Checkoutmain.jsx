@@ -204,13 +204,15 @@ const Checkoutmain = () => {
             </div>
             <div className="flex justify-between mt-6">
               <Link to="/paymentsuccess">
-                <button className="px-4 py-2 bg-orange-500 text-white font-semibold rounded-md">
+                <button className="px-4 py-2 hover:bg-orange-700  bg-orange-500 text-white font-semibold rounded-md">
                   Proceed with payment
                 </button>
               </Link>
-              <button className="px-4 py-2 bg-gray-300 text-gray-700 font-semibold rounded-md">
-                Cancel
-              </button>
+              <Link to="/">
+                <button className="px-4 py-2 bg-black text-white font-semibold rounded-md">
+                  Cancel
+                </button>
+              </Link>
             </div>
           </div>
         </div>

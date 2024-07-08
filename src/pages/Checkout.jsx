@@ -76,9 +76,11 @@ const Checkout = () => {
         </table>
       </div>
       <div className="mt-4 flex justify-between items-center">
-        <button className=" p-2 border-2 hover:bg-gray-400 font-bold py-2 px-4 rounded">
-          Return Home
-        </button>
+        <Link to="/">
+          <button className=" p-2 border-2 hover:bg-gray-400 font-bold py-2 px-4 rounded">
+            Return Home
+          </button>
+        </Link>
         <button className="border-2 p-2 hover:bg-gray-400 font-bold  px-4 ">
           Update Cart
         </button>
