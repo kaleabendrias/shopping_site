@@ -1,6 +1,7 @@
 import camera from "../assets/image/camera.png";
 import iphone from "../assets/image/iphone.png";
 import headphone from "../assets/image/headphone.png";
+import { Link } from "react-router-dom";
 
 const NewDeals = () => {
   return (
@@ -15,9 +16,11 @@ const NewDeals = () => {
             <p>From $50.00</p>
           </div>
           <div>
-            <a href="#" className="underline">
-              Browse Details
-            </a>
+            <Link to="/shop">
+              <a href="#" className="underline">
+                Browse Details
+              </a>
+            </Link>
           </div>
         </div>
         <img
@@ -36,9 +39,11 @@ const NewDeals = () => {
             <p>From $50.00</p>
           </div>
           <div>
-            <a href="#" className="underline">
-              Browse Details
-            </a>
+            <Link to="/shop">
+              <a href="#" className="underline">
+                Browse Details
+              </a>
+            </Link>
           </div>
         </div>
         <img
@@ -57,9 +62,11 @@ const NewDeals = () => {
             <p>From $50.00</p>
           </div>
           <div>
-            <a href="#" className="underline">
-              Browse Details
-            </a>
+            <Link to="/shop">
+              <a href="#" className="underline">
+                Browse Details
+              </a>
+            </Link>
           </div>
         </div>
         <img

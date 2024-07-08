@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import image6 from "../assets/image/image6.png";
 const PsCard = () => {
   return (
@@ -12,9 +13,11 @@ const PsCard = () => {
             <p>Worldwide shopping, We ship to over 200</p>
             <p>countries right to your doorstep</p>
           </div>
-          <button className="py-10 bg-orange-500 px-3 py-2 rounded-md">
-            Order now
-          </button>
+          <Link to="/shop">
+            <button className="py-2 bg-orange-500 px-3 rounded-md">
+              Order now
+            </button>
+          </Link>
         </div>
         <div className=""></div>
         <img src={image6} className="w-72 h-72 mr-20" alt="" />

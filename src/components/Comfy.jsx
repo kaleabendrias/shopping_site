@@ -2,6 +2,7 @@ import man from "../assets/image/man.png";
 import woman from "../assets/image/woman.png";
 import purse from "../assets/image/purse.png";
 import formen from "../assets/image/formen.png";
+import { Link } from "react-router-dom";
 const Comfy = () => {
   return (
     <div className="px-11 mb-10 text-[#191B1F]">
@@ -25,23 +26,18 @@ const Comfy = () => {
                   <p>Big Sale $20</p>
                 </div>
                 <div className="border border-[#191B1F] rounded-full p-1">
-                  <svg
-                    class="w-6 h-6 text-[#191B1F]"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m9 5 7 7-7 7"
-                    />
-                  </svg>
+                  <Link to="shop">
+                    <svg
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke="currentColor" d="m9 5 7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -69,23 +65,18 @@ const Comfy = () => {
                   <p>Big Sale $20</p>
                 </div>
                 <div className="border border-[#191B1F] rounded-full p-1">
-                  <svg
-                    class="w-6 h-6 text-[#191B1F]"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m9 5 7 7-7 7"
-                    />
-                  </svg>
+                  <Link to="shop">
+                    <svg
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke="currentColor" d="m9 5 7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
             </div>
