@@ -21,7 +21,7 @@ const categories = [
 
 const Popular = () => {
   return (
-    <div className="px-11">
+    <div className="mt-11 md:mt-0 px-11">
       <p className="text-3xl font-bold pb-10">Popular categories</p>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 mb-5">
         {categories.map((category, index) => (

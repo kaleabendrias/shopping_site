@@ -14,7 +14,7 @@ const Subscribe = () => {
               subscribe to our news letter and get 10% off
             </p>
           </div>
-          <div className="flex items-center w-full">
+          <div className="flex flex-col md:flex-row items-center w-full">
             <input
               type="text"
               placeholder="Enter Email"
