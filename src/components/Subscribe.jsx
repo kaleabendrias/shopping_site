@@ -26,8 +26,11 @@ const Subscribe = () => {
           </div>
         </div>
         <div>
-          <img src={perfume} className="w-40 z-10 mt-10 absolute ml-24" />
-          <img src={speaker} className="w-40 z-0 " />
+          <img
+            src={perfume}
+            className="hidden md:flex w-40 z-10 md:mt-10 md:absolute md:ml-8 lg:ml-24"
+          />
+          <img src={speaker} className="hidden md:flex w-40 z-0 " />
         </div>
       </div>
     </div>

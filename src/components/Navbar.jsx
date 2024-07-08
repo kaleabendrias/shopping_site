@@ -47,7 +47,9 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex gap-6 pr-10 items-center">
-          <img src={cartIcon} className="w-6 h-6" alt="Cart" />
+          <Link to="/checkout">
+            <img src={cartIcon} className="w-6 h-6" alt="Cart" />
+          </Link>
           <div className="hidden md:flex gap-6">
             <div className="flex gap-2 items-center">
               <img loading="lazy" src={image1} />
