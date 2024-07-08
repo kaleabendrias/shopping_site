@@ -4,6 +4,7 @@ import image2 from "../assets/image/image2.svg";
 import image3 from "../assets/image/image3.svg";
 import downArrow from "../assets/image/down-arrow.png";
 import { Link } from "react-router-dom";
+import cartIcon from "../assets/image/carticon.png";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -46,6 +47,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex gap-6 pr-10 items-center">
+          <img src={cartIcon} className="w-6 h-6" alt="Cart" />
           <div className="hidden md:flex gap-6">
             <div className="flex gap-2 items-center">
               <img loading="lazy" src={image1} />
@@ -94,9 +96,15 @@ const Navbar = () => {
             <div>CATEGORIES</div>
             <img src={downArrow} className="w-3 h-3" />
           </div>
-          <div className="self-stretch my-auto">HOME</div>
-          <div className="self-stretch my-auto">SHOP</div>
-          <div className="self-stretch my-auto">CHECKOUT</div>
+          <Link to="/">
+            <div className="self-stretch my-auto">HOME</div>
+          </Link>
+          <Link to="/shop">
+            <div className="self-stretch my-auto">SHOP</div>
+          </Link>
+          <Link to="/checkout">
+            <div className="self-stretch my-auto">CHECKOUT</div>
+          </Link>
           <div className="self-stretch my-auto">SUPPLIERS</div>
         </div>
       </div>
