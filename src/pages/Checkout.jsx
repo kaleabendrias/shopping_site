@@ -44,7 +44,7 @@ const Checkout = () => {
           <tbody>
             {cartItems.map((item) => (
               <tr key={item.id} className="border border-spacing-2">
-                <div className="flex items-center m-2">
+                <div className="flex items-center m-2 py-4">
                   <img src={item.image} className="w-8" />
                   <td className="px-4 py-2 ">{item.name}</td>
                 </div>
