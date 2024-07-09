@@ -4,8 +4,8 @@ import perfume from "../assets/image/perfume.png";
 const Subscribe = () => {
   return (
     <div className="p-11">
-      <div className="bg-[#EDEDED] flex items-center justify-center gap-24 px-16 py-5">
-        <div className="flex flex-col gap-8 w-[60%]">
+      <div className="bg-[#EDEDED] flex items-center justify-center  px-16 py-5">
+        <div className="flex flex-col gap-8 md:w-[60%]">
           <div className="flex flex-col gap-1">
             <p className="text-4xl font-semibold">
               Subscribe to our newsletter
@@ -14,13 +14,13 @@ const Subscribe = () => {
               subscribe to our news letter and get 10% off
             </p>
           </div>
-          <div className="flex flex-col md:flex-row items-center w-full">
+          <div className="flex flex-row items-center w-full">
             <input
               type="text"
               placeholder="Enter Email"
               className="outline-none p-2 w-full"
             />
-            <button className="bg-orange-500 p-2 rounded-r-md text-white font-bold">
+            <button className="bg-orange-500 p-2 w-24 rounded-r-md text-white font-bold">
               Subscribe
             </button>
           </div>
