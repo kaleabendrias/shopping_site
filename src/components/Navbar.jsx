@@ -157,34 +157,19 @@ const Navbar = () => {
             {isCategoriesMenuOpen && (
               <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
                 <div className="flex flex-col text-black">
-                  <Link
-                    to="/category/electronics"
-                    className="py-2 px-4 hover:bg-gray-100"
-                  >
+                  <Link to="/shop" className="py-2 px-4 hover:bg-gray-100">
                     Electronics
                   </Link>
-                  <Link
-                    to="/category/clothing"
-                    className="py-2 px-4 hover:bg-gray-100"
-                  >
+                  <Link to="/shop" className="py-2 px-4 hover:bg-gray-100">
                     Clothing
                   </Link>
-                  <Link
-                    to="/category/home"
-                    className="py-2 px-4 hover:bg-gray-100"
-                  >
+                  <Link to="/shop" className="py-2 px-4 hover:bg-gray-100">
                     Home & Garden
                   </Link>
-                  <Link
-                    to="/category/sports"
-                    className="py-2 px-4 hover:bg-gray-100"
-                  >
+                  <Link to="/shop" className="py-2 px-4 hover:bg-gray-100">
                     Sports
                   </Link>
-                  <Link
-                    to="/category/toys"
-                    className="py-2 px-4 hover:bg-gray-100"
-                  >
+                  <Link to="/shop" className="py-2 px-4 hover:bg-gray-100">
                     Toys
                   </Link>
                 </div>
