@@ -5,6 +5,7 @@ import Checkout from "./pages/Checkout";
 import Checkoutmain from "./pages/Checkoutmain";
 import Shop from "./pages/Shop";
 import PaymentSuccess from "./pages/Paymentsuccess";
+import Custom404 from "./pages/Custom404";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/paymentsuccess",
         element: <PaymentSuccess />,
+      },
+      {
+        path: "*",
+        element: <Custom404 />,
       },
     ],
   },
