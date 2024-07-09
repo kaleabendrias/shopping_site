@@ -5,8 +5,8 @@ import perfume from "../assets/image/perfume.png";
 
 const Checkoutmain = () => {
   return (
-    <div className="px-11">
-      <div className="max-w-7xl mx-auto p-4">
+    <div className="px-5 md:px-11">
+      <div className="mx-auto p-4">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="md:w-2/3">
             <h2 className="text-2xl font-semibold mb-6">Billing details</h2>
@@ -97,7 +97,7 @@ const Checkoutmain = () => {
             </form>
           </div>
           <div className="md:w-1/3 mt-10 md:mt-0 md:pl-10">
-            <div className=" p-6 rounded-md">
+            <div className=" md:p-6 rounded-md">
               <div className="flex justify-between items-center mb-4 mt-11">
                 <div className="flex justify-center items-center space-x-2 ">
                   <img src={perfume} className="w-10" />
@@ -202,14 +202,14 @@ const Checkoutmain = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-between mt-6">
+            <div className="flex flex-col md:flex-row justify-between mt-6 space-y-2 md:space-y-0 md:space-x-4">
               <Link to="/paymentsuccess">
-                <button className="px-4 py-2 hover:bg-orange-700  bg-orange-500 text-white font-semibold rounded-md">
+                <button className="w-full md:w-auto px-4 py-2 hover:bg-orange-700 bg-orange-500 text-white font-semibold rounded-md">
                   Proceed with payment
                 </button>
               </Link>
               <Link to="/">
-                <button className="px-4 py-2 bg-black text-white font-semibold rounded-md">
+                <button className="w-full md:w-auto px-4 py-2 bg-black text-white font-semibold rounded-md">
                   Cancel
                 </button>
               </Link>

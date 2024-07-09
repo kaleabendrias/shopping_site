@@ -4,17 +4,17 @@ import googleplay from "../assets/image/googleplay.png";
 const Footer = () => {
   return (
     <div className="bg-[#FE7F0A] bg-opacity-20">
-      <div className="px-11 grid grid-cols-2 space-y-5 md:space-y-0 md:grid-cols-5 justify-between pt-11 text-[#191B1F] text-opacity-60">
+      <div className="px-4 py-11 grid grid-cols-2 md:grid-cols-5 gap-5 text-[#191B1F] text-opacity-60">
         <div className="flex flex-col gap-3">
           <p className="font-semibold text-lg text-black">Contact us</p>
-          <p className="">No 123, Ikeja, Lagos State, Nigeria.</p>
+          <p>No 123, Ikeja, Lagos State, Nigeria.</p>
           <p>+234-8169672420</p>
           <p>noahajiyon@gmail.com</p>
         </div>
 
         <div className="flex flex-col gap-3">
           <p className="font-semibold text-lg text-black">Shop</p>
-          <p className="">Nigeria</p>
+          <p>Nigeria</p>
           <p>England</p>
           <p>United States</p>
           <p>Ethiopia</p>
@@ -22,7 +22,7 @@ const Footer = () => {
 
         <div className="flex flex-col gap-3">
           <p className="font-semibold text-lg text-black">Account</p>
-          <p className="">My Account</p>
+          <p>My Account</p>
           <p>Login/Register</p>
           <p>Cart</p>
           <p>Wishlist</p>
@@ -30,14 +30,14 @@ const Footer = () => {
 
         <div className="flex flex-col gap-3">
           <p className="font-semibold text-lg text-black">Download App</p>
-          <p className="">
+          <p>
             Download our App and get extra 15% discount on your first order.
           </p>
         </div>
 
-        <div className="hidden md:flex flex-col items-center justify-center gap-3 md:items-start md:justify-start">
-          <img src={appstore} className="w-16" />
-          <img src={googleplay} className="w-16" />
+        <div className="flex flex-col items-end md:items-center justify-center gap-3">
+          <img src={appstore} className="w-16" alt="App Store" />
+          <img src={googleplay} className="w-16" alt="Google Play" />
         </div>
       </div>
     </div>

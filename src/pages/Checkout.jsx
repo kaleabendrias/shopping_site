@@ -51,7 +51,7 @@ const Checkout = () => {
                 <td className="px-4 py-2 ">${item.price}</td>
                 <td className="px-4 py-2 ">
                   <div className="flex items-centerl">
-                    <div className=" border rounded-full">
+                    <div className="flex flex-col md:flex-row border rounded-full">
                       <button
                         className="px-2"
                         onClick={() => handleQuantityChange(item.id, -1)}
