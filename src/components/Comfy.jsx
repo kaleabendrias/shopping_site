@@ -11,7 +11,7 @@ const Comfy = () => {
           <p className="px-2 text-5xl pt-10 pb-3 text-[#424344]">
             Comfy styles for her
           </p>
-          <div className="flex justify-between">
+          <div className="flex flex-col md:flex-row justify-between">
             <div className="flex flex-col px-3 justify-between ">
               <div>
                 <p>Shop Maukal fashion icluding</p>
@@ -50,7 +50,7 @@ const Comfy = () => {
           <p className="px-2 text-5xl pt-10 pb-3 text-[#424344]">
             Comfy styles for him
           </p>
-          <div className="flex justify-between">
+          <div className="flex flex-col md:flex-row justify-between">
             <div className="flex flex-col px-3 justify-between ">
               <div>
                 <p>Shop Maukal fashion icluding</p>
