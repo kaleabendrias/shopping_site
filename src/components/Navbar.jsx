@@ -71,7 +71,7 @@ const Navbar = () => {
               </div>
               {isLanguageMenuOpen && (
                 <div className="absolute right-0 mt-2 w-24 bg-white border border-gray-200 rounded-md shadow-lg">
-                  <div className="flex flex-col">
+                  <div className="flex flex-col text-black">
                     <button className="py-2 px-4 text-left hover:bg-gray-100">
                       English
                     </button>
@@ -122,7 +122,7 @@ const Navbar = () => {
                 </div>
                 {isLanguageMenuOpen && (
                   <div className="absolute right-0 mt-2 w-24 bg-white border border-gray-200 rounded-md shadow-lg">
-                    <div className="flex flex-col">
+                    <div className="flex flex-col text-black">
                       <button className="py-2 px-4 text-left hover:bg-gray-100">
                         English
                       </button>
@@ -156,7 +156,7 @@ const Navbar = () => {
             </div>
             {isCategoriesMenuOpen && (
               <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
-                <div className="flex flex-col">
+                <div className="flex flex-col text-black">
                   <Link
                     to="/category/electronics"
                     className="py-2 px-4 hover:bg-gray-100"
