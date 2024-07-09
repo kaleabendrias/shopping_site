@@ -1,16 +1,26 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import image1 from "../assets/image/image1.svg";
 import image2 from "../assets/image/image2.svg";
 import image3 from "../assets/image/image3.svg";
 import downArrow from "../assets/image/down-arrow.png";
-import { Link } from "react-router-dom";
 import cartIcon from "../assets/image/carticon.png";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [isCategoriesMenuOpen, setIsCategoriesMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const toggleLanguageMenu = () => {
+    setIsLanguageMenuOpen(!isLanguageMenuOpen);
+  };
+
+  const toggleCategoriesMenu = () => {
+    setIsCategoriesMenuOpen(!isCategoriesMenuOpen);
   };
 
   return (
@@ -51,11 +61,30 @@ const Navbar = () => {
             <img src={cartIcon} className="w-6 h-6" alt="Cart" />
           </Link>
           <div className="hidden md:flex gap-6">
-            <div className="flex gap-2 items-center">
-              <img loading="lazy" src={image1} />
-              <div className="text-2xl">Eng</div>
+            <div className="relative">
+              <div
+                className="flex gap-2 items-center cursor-pointer"
+                onClick={toggleLanguageMenu}
+              >
+                <img loading="lazy" src={image1} />
+                <div className="text-2xl">Eng</div>
+              </div>
+              {isLanguageMenuOpen && (
+                <div className="absolute right-0 mt-2 w-24 bg-white border border-gray-200 rounded-md shadow-lg">
+                  <div className="flex flex-col">
+                    <button className="py-2 px-4 text-left hover:bg-gray-100">
+                      English
+                    </button>
+                    <button className="py-2 px-4 text-left hover:bg-gray-100">
+                      French
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
-            <img loading="lazy" src={image2} className="w-10" />
+            <div className="cursor-pointer">
+              <img loading="lazy" src={image2} className="w-10" />
+            </div>
           </div>
           <button className="hidden md:block bg-orange-500 text-white text-md px-5 rounded-md">
             Sign Up
@@ -82,8 +111,31 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden flex flex-col items-center px-4 py-2 text-sm text-white bg-zinc-900">
           <div className="flex flex-col gap-2">
-            <div className="flex gap-2 items-center">
-              <img loading="lazy" src={image1} />
+            <div className="flex gap-6">
+              <div className="relative">
+                <div
+                  className="flex gap-2 items-center cursor-pointer"
+                  onClick={toggleLanguageMenu}
+                >
+                  <img loading="lazy" src={image1} />
+                  <div className="text-2xl">Eng</div>
+                </div>
+                {isLanguageMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-24 bg-white border border-gray-200 rounded-md shadow-lg">
+                    <div className="flex flex-col">
+                      <button className="py-2 px-4 text-left hover:bg-gray-100">
+                        English
+                      </button>
+                      <button className="py-2 px-4 text-left hover:bg-gray-100">
+                        French
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="cursor-pointer">
+                <img loading="lazy" src={image2} className="w-10" />
+              </div>
             </div>
             <button className="bg-orange-500 text-white text-md px-5 rounded-md">
               Sign Up
@@ -94,9 +146,50 @@ const Navbar = () => {
 
       <div className="flex justify-center items-center px-16 text-sm text-white bg-zinc-900">
         <div className="flex gap-5 justify-between items-center max-w-full w-[720px] max-md:flex-wrap">
-          <div className="flex items-center gap-1.5 justify-between self-stretch py-1.5">
-            <div>CATEGORIES</div>
-            <img src={downArrow} className="w-3 h-3" />
+          <div className="relative">
+            <div
+              className="flex items-center gap-1.5 justify-between self-stretch py-1.5 cursor-pointer"
+              onClick={toggleCategoriesMenu}
+            >
+              <div>CATEGORIES</div>
+              <img src={downArrow} className="w-3 h-3" />
+            </div>
+            {isCategoriesMenuOpen && (
+              <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
+                <div className="flex flex-col">
+                  <Link
+                    to="/category/electronics"
+                    className="py-2 px-4 hover:bg-gray-100"
+                  >
+                    Electronics
+                  </Link>
+                  <Link
+                    to="/category/clothing"
+                    className="py-2 px-4 hover:bg-gray-100"
+                  >
+                    Clothing
+                  </Link>
+                  <Link
+                    to="/category/home"
+                    className="py-2 px-4 hover:bg-gray-100"
+                  >
+                    Home & Garden
+                  </Link>
+                  <Link
+                    to="/category/sports"
+                    className="py-2 px-4 hover:bg-gray-100"
+                  >
+                    Sports
+                  </Link>
+                  <Link
+                    to="/category/toys"
+                    className="py-2 px-4 hover:bg-gray-100"
+                  >
+                    Toys
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
           <Link to="/">
             <div className="self-stretch my-auto">HOME</div>
