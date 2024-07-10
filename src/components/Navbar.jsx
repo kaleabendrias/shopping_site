@@ -61,7 +61,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        <div className="flex gap-6 pr-10 items-center">
+        <div className="flex lg:gap-6 md:pr-10 items-center">
           <div className="flex gap-6 pr-10 items-center">
             <div className="relative">
               <svg
