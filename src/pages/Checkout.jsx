@@ -102,11 +102,11 @@ const Checkout = () => {
         <div className="w-full md:w-1/3 mt-4 md:mt-0">
           <div className="bg-gray-100 p-4 rounded">
             <p className="font-semibold text-lg mb-4">Cart Total</p>
-            <div className="flex justify-between mb-2">
+            <div className="flex justify-between mb-4 p-2 border-b-2">
               <span>Amount</span>
               <span>${cartTotal}</span>
             </div>
-            <div className="flex justify-between mb-2">
+            <div className="flex justify-between mb-2 border-b-2">
               <span>Shipping</span>
               <span>$0.00</span>
             </div>

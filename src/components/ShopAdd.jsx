@@ -6,7 +6,7 @@ const ShopAdd = () => {
     <div className="bgimg h-[85vh]">
       <div className="pl-8 h-full flex flex-col justify-center gap-8">
         <div className="flex gap-6 items-center">
-          <img src={image5} className="w-16 w-16" alt="" />
+          <img src={image5} className="w-16 object-contain" alt="" />
           <p className="text-3xl text-white font-bold">Welcome to Maukal</p>
         </div>
         <div className="text-white flex flex-col gap-4 text-5xl font-bold ">

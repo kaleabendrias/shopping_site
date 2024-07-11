@@ -5,10 +5,13 @@ import perfume from "../assets/image/perfume.png";
 
 const Checkoutmain = () => {
   return (
-    <div className="px-5 md:px-11">
+    <div className="px-5 md:px-11 mb-20">
       <div className="mx-auto p-4">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="md:w-2/3">
+            <p className="text-sm my-4 mb-8">
+              Home/Cart<span className="font-semibold">/Checkout</span>
+            </p>
             <h2 className="text-2xl font-semibold mb-6">Billing details</h2>
             <form className="space-y-4">
               <div>

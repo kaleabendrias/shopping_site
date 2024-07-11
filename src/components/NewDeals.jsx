@@ -26,7 +26,7 @@ const NewDeals = () => {
         <img
           src={headphone}
           alt="Headphone"
-          className="w-2/5 md:w-3/5 h-24 md:h-40"
+          className="w-2/5 md:w-3/5 h-24 md:h-40 object-contain"
         />
       </div>
       <div className="w-full md:w-[30%] bg-[#1B5779] flex justify-between p-6">
@@ -49,7 +49,7 @@ const NewDeals = () => {
         <img
           src={iphone}
           alt="iPhone"
-          className="w-2/5 md:w-3/5 h-24 md:h-40"
+          className="w-2/5 md:w-3/5 h-24 md:h-40 object-contain"
         />
       </div>
       <div className="w-full md:w-[30%] bg-black flex justify-between p-6">
@@ -72,7 +72,7 @@ const NewDeals = () => {
         <img
           src={camera}
           alt="Camera"
-          className="w-2/5 md:w-3/5 h-24 md:h-40"
+          className="w-2/5 md:w-3/5 h-24 md:h-40 object-contain"
         />
       </div>
     </div>
