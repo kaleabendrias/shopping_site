@@ -4,7 +4,7 @@ import perfume from "../assets/image/perfume.webp";
 const Subscribe = () => {
   return (
     <div className="p-11">
-      <div className="bg-[#EDEDED] flex items-center justify-center  px-16 py-5">
+      <div className="bg-[#EDEDED] flex items-center justify-center px-8 py-5">
         <div className="flex flex-col gap-8 md:w-[60%]">
           <div className="flex flex-col gap-1">
             <p className="text-4xl font-semibold">
@@ -25,12 +25,15 @@ const Subscribe = () => {
             </button>
           </div>
         </div>
-        <div>
+        <div className="">
           <img
             src={perfume}
-            className="hidden md:flex w-40 z-10 md:mt-10 md:absolute md:ml-8 lg:ml-24"
+            className="hidden md:flex w-40 z-10 md:mt-10 md:absolute md:ml-8 lg:ml-24 object-contain"
           />
-          <img src={speaker} className="hidden md:flex w-40 z-0 " />
+          <img
+            src={speaker}
+            className="hidden md:flex w-40 z-0 object-contain"
+          />
         </div>
       </div>
     </div>
