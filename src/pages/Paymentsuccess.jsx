@@ -4,16 +4,19 @@ import { useNavigate } from "react-router-dom";
 const PaymentSuccess = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/");
-    }, 15000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     navigate("/");
+  //   }, 15000);
 
-    return () => clearTimeout(timer);
-  }, [navigate]);
+  //   return () => clearTimeout(timer);
+  // }, [navigate]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <p className="w-full text-left ml-11">
+        Home/Cart<span className="font-semibold">/Success</span>
+      </p>
       <div className="p-10 text-center flex flex-col items-center">
         <div className="flex items-center justify-center w-40 h-40 md:w-80 md:h-80 rounded-full bg-orange-200 ">
           <div className="flex items-center justify-center w-32 h-32 md:w-60 md:h-60 rounded-full bg-orange-300 ">

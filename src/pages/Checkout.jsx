@@ -28,6 +28,9 @@ const Checkout = () => {
 
   return (
     <div className="container mx-auto p-4 my-10">
+      <p className="text-md my-4 mb-16">
+        Home<span className="font-semibold">/Cart</span>
+      </p>
       <div className="mb-4">
         <h2 className="text-xl font-semibold">Cart</h2>
       </div>
