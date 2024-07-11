@@ -61,8 +61,8 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        <div className="flex lg:gap-6 md:pr-10 items-center">
-          <div className="flex gap-6 pr-10 items-center">
+        <div className="flex pr-10 lg:gap-6  items-center">
+          <div className="flex gap-6  items-center">
             <div className="relative">
               <svg
                 width="23"
@@ -106,33 +106,12 @@ const Navbar = () => {
           </Link>
 
           <div className="hidden md:flex gap-6">
-            <div className="relative">
-              <div
-                className="flex gap-2 items-center cursor-pointer"
-                onClick={toggleLanguageMenu}
-              >
-                <img loading="lazy" src={image1} />
-                <div className="text-2xl">Eng</div>
-              </div>
-              {isLanguageMenuOpen && (
-                <div className="absolute right-0 mt-2 w-24 bg-white border border-gray-200 rounded-md shadow-lg">
-                  <div className="flex flex-col text-black">
-                    <button className="py-2 px-4 text-left hover:bg-gray-100">
-                      English
-                    </button>
-                    <button className="py-2 px-4 text-left hover:bg-gray-100">
-                      French
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
             <div className="cursor-pointer">
               <img loading="lazy" src={image2} className="w-10" />
             </div>
           </div>
-          <button className="hidden md:block bg-orange-500 text-white text-md px-5 rounded-md">
-            Sign Up
+          <button className="hidden p-2 md:block bg-orange-500 text-white text-md px-5 rounded-md">
+            Premium
           </button>
           <button className="md:hidden" onClick={toggleMobileMenu}>
             <svg
@@ -156,32 +135,6 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden flex flex-col items-center px-4 py-2 text-sm text-white bg-zinc-900">
           <div className="flex flex-col gap-2">
-            <div className="flex gap-6">
-              <div className="relative">
-                <div
-                  className="flex gap-2 items-center cursor-pointer"
-                  onClick={toggleLanguageMenu}
-                >
-                  <img loading="lazy" src={image1} />
-                  <div className="text-2xl">Eng</div>
-                </div>
-                {isLanguageMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-24 bg-white border border-gray-200 rounded-md shadow-lg">
-                    <div className="flex flex-col text-black">
-                      <button className="py-2 px-4 text-left hover:bg-gray-100">
-                        English
-                      </button>
-                      <button className="py-2 px-4 text-left hover:bg-gray-100">
-                        French
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div className="cursor-pointer">
-                <img loading="lazy" src={image2} className="w-10" />
-              </div>
-            </div>
             <button className="bg-orange-500 text-white text-md px-5 rounded-md">
               Sign Up
             </button>
