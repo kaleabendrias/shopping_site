@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import image5 from "../assets/image/image5.png";
+import image5 from "../assets/image/image5.webp";
 import "./shopadd.css";
 const ShopAdd = () => {
   return (

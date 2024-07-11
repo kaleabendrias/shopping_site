@@ -1,7 +1,7 @@
-import iphone from "../assets/image/iphone.png";
-import earphone from "../assets/image/headphone.png";
-import usb from "../assets/image/usb.png";
-import perfume from "../assets/image/perfume.png";
+import iphone from "../assets/image/iphone.webp";
+import earphone from "../assets/image/headphone.webp";
+import usb from "../assets/image/usb.webp";
+import perfume from "../assets/image/perfume.webp";
 import { Link } from "react-router-dom";
 
 const categories = [
@@ -29,13 +29,14 @@ const Popular = () => {
             key={index}
             className="bg-[#D9D9D9] flex flex-col gap-3 items-center p-3"
           >
-            <Link to="/shop" className="p-2">
+            <Link to="/shop" className="px-2">
               <img
                 src={category.image}
                 className="w-full h-40 object-contain"
                 alt={category.name}
               />
             </Link>
+            <p className="font-semibold">{category.name}</p>
           </div>
         ))}
       </div>

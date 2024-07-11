@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import iphone from "../assets/image/iphone.png";
-import earphone from "../assets/image/headphone.png";
-import usb from "../assets/image/usb.png";
-import perfume from "../assets/image/perfume.png";
+import iphone from "../assets/image/iphone.webp";
+import earphone from "../assets/image/headphone.webp";
+import usb from "../assets/image/usb.webp";
+import perfume from "../assets/image/perfume.webp";
 
 const Card = ({ image, title, brand, rating, price, originalPrice, label }) => {
   return (

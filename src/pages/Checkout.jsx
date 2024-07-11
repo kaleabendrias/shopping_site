@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import perfume from "../assets/image/perfume.png";
-import earphone from "../assets/image/headphone.png";
+import perfume from "../assets/image/perfume.webp";
+import earphone from "../assets/image/headphone.webp";
 
 const Checkout = () => {
   const [cartItems, setCartItems] = useState([

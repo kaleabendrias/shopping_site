@@ -1,6 +1,6 @@
-import camera from "../assets/image/camera.png";
-import iphone from "../assets/image/iphone.png";
-import headphone from "../assets/image/headphone.png";
+import camera from "../assets/image/camera.webp";
+import iphone from "../assets/image/iphone.webp";
+import headphone from "../assets/image/headphone.webp";
 import { Link } from "react-router-dom";
 
 const NewDeals = () => {

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import visa from "../assets/image/visa.png";
-import headphone from "../assets/image/headphone.jpg";
-import perfume from "../assets/image/perfume.png";
+import headphone from "../assets/image/headphone.webp";
+import perfume from "../assets/image/perfume.webp";
 
 const Checkoutmain = () => {
   return (

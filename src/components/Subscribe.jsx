@@ -1,5 +1,5 @@
-import speaker from "../assets/image/speaker.png";
-import perfume from "../assets/image/perfume.png";
+import speaker from "../assets/image/speaker.webp";
+import perfume from "../assets/image/perfume.webp";
 
 const Subscribe = () => {
   return (
