@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import iphone from "../assets/image/iphone.png";
 import earphone from "../assets/image/headphone.png";
-import camera from "../assets/image/camera.jpg";
+import usb from "../assets/image/usb.png";
 import perfume from "../assets/image/perfume.png";
 
 const Card = ({ image, title, brand, rating, price, originalPrice, label }) => {
   return (
     <div className="w-full sm:w-1/2 lg:w-1/4 p-2">
       <div className="shadow-lg rounded-lg mb-2">
-        <div className="bg-[#D9D9D9] flex justify-center pt-3 rounded-t-lg">
-          <img src={image} alt={title} className="w-60 h-60" />
+        <div className="bg-[#D9D9D9] p-4 sm:p-2 flex justify-center pt-3 rounded-t-lg">
+          <img src={image} alt={title} className="w-60 h-60 object-contain" />
         </div>
         <div className="p-5">
-          <p className="mb-1">{title}</p>
+          <p className="mb-1 font-semibold">{title}</p>
           <p>{brand}</p>
           <div className="flex items-center justify-between">
             <div>
@@ -83,6 +83,41 @@ const AllProducts = () => {
     },
     {
       image: earphone,
+      title: "Headphone meagasound",
+      brand: "Beats",
+      rating: "4.3",
+      price: "2, 000",
+      originalPrice: "2,599",
+      label: "Best seller",
+    },
+    {
+      image: usb,
+      title: "San Disk",
+      brand: "San Disk",
+      rating: "4.6",
+      price: "1,9",
+      originalPrice: "2,9",
+    },
+    {
+      image: perfume,
+      title: "Ralph Lauren men",
+      brand: "Ralph Lauren",
+      rating: "4.5",
+      price: "4, 99",
+      originalPrice: "7,99",
+      label: "Discount",
+    },
+    {
+      image: iphone,
+      title: "iPhone 15 Pro Max",
+      brand: "Oraimo",
+      rating: "4.5",
+      price: "9,999",
+      originalPrice: "10,599",
+      label: "New arrival",
+    },
+    {
+      image: earphone,
       title: "Headphone 14",
       brand: "Beats",
       rating: "4.3",
@@ -91,7 +126,7 @@ const AllProducts = () => {
       label: "Best seller",
     },
     {
-      image: camera,
+      image: usb,
       title: "cannon 2",
       brand: "Cannon",
       rating: "4.6",
@@ -126,42 +161,7 @@ const AllProducts = () => {
       label: "Best seller",
     },
     {
-      image: camera,
-      title: "cannon 2",
-      brand: "Cannon",
-      rating: "4.6",
-      price: "1,999",
-      originalPrice: "2,599",
-    },
-    {
-      image: perfume,
-      title: "Ralph Lauren men",
-      brand: "Ralph Lauren",
-      rating: "4.5",
-      price: "4, 99",
-      originalPrice: "7,99",
-      label: "Discount",
-    },
-    {
-      image: iphone,
-      title: "iPhone 15 Pro Max",
-      brand: "Oraimo",
-      rating: "4.5",
-      price: "9,999",
-      originalPrice: "10,599",
-      label: "New arrival",
-    },
-    {
-      image: earphone,
-      title: "Headphone 14",
-      brand: "Beats",
-      rating: "4.3",
-      price: "2, 000",
-      originalPrice: "2,599",
-      label: "Best seller",
-    },
-    {
-      image: camera,
+      image: usb,
       title: "cannon 2",
       brand: "Cannon",
       rating: "4.6",

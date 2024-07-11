@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import iphone from "../assets/image/iphone.png";
+import earphone from "../assets/image/headphone.png";
+import usb from "../assets/image/usb.png";
+import perfume from "../assets/image/perfume.png";
 
 const Card = ({ image, title, brand, rating, price, originalPrice, label }) => {
   return (
     <div className="w-full sm:w-1/2 lg:w-1/4 p-2">
       <div className="shadow-lg rounded-lg mb-2">
-        <div className="bg-[#D9D9D9] flex justify-center pt-3 rounded-t-lg">
-          <img src={image} alt={title} className="w-60 h-60" />
+        <div className="bg-[#D9D9D9] flex justify-center p-2 md:p-4 rounded-t-lg">
+          <img src={image} alt={title} className="w-60 h-60 object-contain" />
         </div>
         <div className="p-5">
-          <p className="mb-1">{title}</p>
+          <p className="mb-1 font-semibold">{title}</p>
           <p>{brand}</p>
           <div className="flex items-center justify-between">
             <div>
@@ -79,29 +82,29 @@ const Shop = () => {
       label: "New arrival",
     },
     {
-      image: iphone,
-      title: "iPhone 14",
-      brand: "Apple",
-      rating: "4.7",
-      price: "8,999",
-      originalPrice: "9,599",
+      image: earphone,
+      title: "Headphone meagasound",
+      brand: "Beats",
+      rating: "4.3",
+      price: "2, 000",
+      originalPrice: "2,599",
       label: "Best seller",
     },
     {
-      image: iphone,
-      title: "iPhone 13",
-      brand: "Apple",
+      image: usb,
+      title: "San Disk",
+      brand: "San Disk",
       rating: "4.6",
-      price: "7,999",
-      originalPrice: "8,599",
+      price: "1,9",
+      originalPrice: "2,9",
     },
     {
-      image: iphone,
-      title: "iPhone 12",
-      brand: "Apple",
+      image: perfume,
+      title: "Ralph Lauren men",
+      brand: "Ralph Lauren",
       rating: "4.5",
-      price: "6,999",
-      originalPrice: "7,599",
+      price: "4, 99",
+      originalPrice: "7,99",
       label: "Discount",
     },
     {
@@ -114,29 +117,29 @@ const Shop = () => {
       label: "New arrival",
     },
     {
-      image: iphone,
-      title: "iPhone 14",
-      brand: "Apple",
-      rating: "4.7",
-      price: "8,999",
-      originalPrice: "9,599",
+      image: earphone,
+      title: "Headphone 14",
+      brand: "Beats",
+      rating: "4.3",
+      price: "2, 000",
+      originalPrice: "2,599",
       label: "Best seller",
     },
     {
-      image: iphone,
-      title: "iPhone 13",
-      brand: "Apple",
+      image: usb,
+      title: "cannon 2",
+      brand: "Cannon",
       rating: "4.6",
-      price: "7,999",
-      originalPrice: "8,599",
+      price: "1,999",
+      originalPrice: "2,599",
     },
     {
-      image: iphone,
-      title: "iPhone 12",
-      brand: "Apple",
+      image: perfume,
+      title: "Ralph Lauren men",
+      brand: "Ralph Lauren",
       rating: "4.5",
-      price: "6,999",
-      originalPrice: "7,599",
+      price: "4, 99",
+      originalPrice: "7,99",
       label: "Discount",
     },
     {
@@ -149,29 +152,29 @@ const Shop = () => {
       label: "New arrival",
     },
     {
-      image: iphone,
-      title: "iPhone 14",
-      brand: "Apple",
-      rating: "4.7",
-      price: "8,999",
-      originalPrice: "9,599",
+      image: earphone,
+      title: "Headphone 14",
+      brand: "Beats",
+      rating: "4.3",
+      price: "2, 000",
+      originalPrice: "2,599",
       label: "Best seller",
     },
     {
-      image: iphone,
-      title: "iPhone 13",
-      brand: "Apple",
+      image: usb,
+      title: "cannon 2",
+      brand: "Cannon",
       rating: "4.6",
-      price: "7,999",
-      originalPrice: "8,599",
+      price: "1,999",
+      originalPrice: "2,599",
     },
     {
-      image: iphone,
-      title: "iPhone 12",
-      brand: "Apple",
+      image: perfume,
+      title: "Ralph Lauren men",
+      brand: "Ralph Lauren",
       rating: "4.5",
-      price: "6,999",
-      originalPrice: "7,599",
+      price: "4, 99",
+      originalPrice: "7,99",
       label: "Discount",
     },
   ];
