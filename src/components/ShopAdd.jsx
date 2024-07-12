@@ -15,17 +15,17 @@ const ShopAdd = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-3">
           <p className="text-xl md:text-3xl text-white">Frequently Searched:</p>
-          <Link to="/checkout">
+          <Link to="/shop">
             <button className="text-white border-[1px] px-2 py-0.5 md:px-3 md:py-1 rounded-full">
               Rechargeable Fan
             </button>
           </Link>
-          <Link to="/checkout">
+          <Link to="/shop">
             <button className="text-white border-[1px] px-2 py-0.5 md:px-3 md:py-1 rounded-full">
               iPhone 15 Pro Max
             </button>
           </Link>
-          <Link to="/checkout">
+          <Link to="/shop">
             <button className="text-white border-[1px] px-2 py-0.5 md:px-3 md:py-1 rounded-full">
               Lexus ES 350
             </button>
