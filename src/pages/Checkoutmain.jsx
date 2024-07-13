@@ -16,7 +16,7 @@ const Checkoutmain = () => {
         const productData = await Promise.all(
           productIds.map(async (productId) => {
             const response = await axios.get(
-              `/api/products/${productId}?organization_id=${
+              `${proxyURL}https://api.timbu.cloud/products/${productId}?organization_id=${
                 import.meta.env.VITE_ORG_ID
               }&Appid=${import.meta.env.VITE_APP_ID}&Apikey=${
                 import.meta.env.VITE_API_KEY
