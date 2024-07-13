@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import axios from "axios";
 
+// SVG Icons
+import ClearIcon from "../assets/image/clear.jpeg";
+import RemoveIcon from "../assets/image/remove.jpeg";
+
 const Checkout = () => {
   const [cartItems, setCartItems] = useState([]);
   const context = useOutletContext();
@@ -33,7 +37,6 @@ const Checkout = () => {
           })
         );
 
-        console.log("Cart Item Data:", cartItemData);
         setCartItems(cartItemData);
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -43,14 +46,22 @@ const Checkout = () => {
     fetchProductData();
   }, [context.cart]);
 
-  console.log("CartItems", cartItems);
-
   const handleQuantityChange = (id, quantity) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id ? { ...item, quantity: item.quantity + quantity } : item
       )
     );
+  };
+
+  const handleClearCart = () => {
+    context.setCart([]);
+    setCartItems([]);
+  };
+
+  const handleRemoveItem = (id) => {
+    context.setCart(context.cart.filter((item) => item.id !== id));
+    setCartItems(cartItems.filter((item) => item.id !== id));
   };
 
   const handleCouponApply = () => {
@@ -80,6 +91,7 @@ const Checkout = () => {
               <th className="px-4 py-2 ">Price</th>
               <th className="px-4 py-2 ">Quantity</th>
               <th className="px-4 py-2 ">Amount</th>
+              <th className="px-4 py-2 ">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -87,10 +99,9 @@ const Checkout = () => {
               <tr key={item.id} className="border border-spacing-2">
                 <td className="flex items-center m-2 py-4">
                   {item.photos.length > 0 && (
-                    // Check if photos array has at least one element
                     <div className="flex justify-center items-center">
                       <img
-                        src={`https://api.timbu.cloud/images/${item.photos[0].url}`} // Access the first element of photos
+                        src={`https://api.timbu.cloud/images/${item.photos[0].url}`}
                         alt={item.title}
                         className="w-10 h-10 object-contain mx-auto"
                       />
@@ -122,6 +133,18 @@ const Checkout = () => {
                 <td className="px-4 py-2 ">
                   ${(item.price * item.quantity).toFixed(2)}
                 </td>
+                <td className="px-4 py-2 flex items-center">
+                  <button
+                    onClick={() => handleRemoveItem(item.id)}
+                    className="mr-2 text-red-600"
+                  >
+                    <img
+                      src={RemoveIcon}
+                      className="w-12 h-12"
+                      alt="remove cart icon"
+                    />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -133,8 +156,11 @@ const Checkout = () => {
             Return Home
           </button>
         </Link>
-        <button className="border-2 p-2 hover:bg-gray-400 font-bold px-4 ">
-          Update Cart
+        <button
+          onClick={handleClearCart}
+          className="mt-12 hover:bg-gray-400 font-bold p-2 rounded-full"
+        >
+          <img src={ClearIcon} className="w-8 h-8 " alt="clear cart button" />
         </button>
       </div>
       <div className="mt-4 flex flex-col md:flex-row items-center md:justify-between">
