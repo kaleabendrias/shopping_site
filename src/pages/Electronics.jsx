@@ -98,27 +98,39 @@ const Card = ({
   );
 };
 
-const AllProducts = () => {
+const Electronics = () => {
   const context = useOutletContext();
   const [products, setProducts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const totalPages = 3;
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchAllProducts = async () => {
       setLoading(true);
+      let allProducts = [];
+      let currentPage = 1;
+      const totalPages = 3; // Adjust as necessary or determine dynamically if possible
+
       try {
-        const response = await axios.get(
-          `/api/products?organization_id=${
-            import.meta.env.VITE_ORG_ID
-          }&reverse_sort=false&page=${currentPage}&size=10&Appid=${
-            import.meta.env.VITE_APP_ID
-          }&Apikey=${import.meta.env.VITE_API_KEY}`
+        while (currentPage <= totalPages) {
+          const response = await axios.get(
+            `/api/products?organization_id=${
+              import.meta.env.VITE_ORG_ID
+            }&reverse_sort=false&page=${currentPage}&size=10&Appid=${
+              import.meta.env.VITE_APP_ID
+            }&Apikey=${import.meta.env.VITE_API_KEY}`
+          );
+          console.log(`Fetched page ${currentPage}:`, response.data);
+          const data = response.data;
+          allProducts = [...allProducts, ...data.items];
+          currentPage++;
+        }
+
+        // Filter the products to only include those in the "electronics" category
+        const electronicsProducts = allProducts.filter((product) =>
+          product.categories.some((category) => category.name === "electronics")
         );
-        console.log(`Fetched page ${currentPage}:`, response.data);
-        const data = response.data;
-        setProducts(data.items);
+
+        setProducts(electronicsProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -126,8 +138,8 @@ const AllProducts = () => {
       }
     };
 
-    fetchProducts();
-  }, [currentPage]);
+    fetchAllProducts();
+  }, []);
 
   const addToCart = (productId) => {
     const itemExists = context.cart.some(
@@ -139,18 +151,6 @@ const AllProducts = () => {
     }
 
     console.log(context.cart);
-  };
-
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
   };
 
   return (
@@ -198,26 +198,10 @@ const AllProducts = () => {
               />
             ))}
           </div>
-          <div className="mt-4 flex justify-center">
-            <button
-              className="px-4 py-2 mx-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 hover:text-gray-800"
-              onClick={prevPage}
-              disabled={currentPage === 1 || loading}
-            >
-              Previous
-            </button>
-            <button
-              className="px-4 py-2 mx-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 hover:text-gray-800"
-              onClick={nextPage}
-              disabled={currentPage >= totalPages || loading}
-            >
-              Next
-            </button>
-          </div>
         </>
       )}
     </div>
   );
 };
 
-export default AllProducts;
+export default Electronics;

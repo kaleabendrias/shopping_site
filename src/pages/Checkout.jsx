@@ -1,13 +1,49 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import perfume from "../assets/image/perfume.webp";
-import earphone from "../assets/image/headphone.webp";
+import { useEffect, useState } from "react";
+import { Link, useOutletContext } from "react-router-dom";
+import axios from "axios";
 
 const Checkout = () => {
-  const [cartItems, setCartItems] = useState([
-    { image: perfume, id: 1, name: "Gamepad", price: 250, quantity: 2 },
-    { image: earphone, id: 2, name: "Earpod", price: 250, quantity: 1 },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
+  const context = useOutletContext();
+
+  const generateRandomPrice = () => {
+    return (
+      Math.floor((Math.random() * (100000 - 10000)) / 1000) * 1000 +
+      10000
+    ).toFixed(2); // Generates a random price between 10,000 and 100,000 in increments of 1000
+  };
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        const cartItemData = await Promise.all(
+          context.cart.map(async (cartItem) => {
+            const response = await axios.get(
+              `/api/products/${cartItem.id}?organization_id=${
+                import.meta.env.VITE_ORG_ID
+              }&Appid=${import.meta.env.VITE_APP_ID}&Apikey=${
+                import.meta.env.VITE_API_KEY
+              }`
+            );
+            return {
+              ...response.data,
+              quantity: cartItem.quantity,
+              price: generateRandomPrice(),
+            }; // Assuming the API returns product data
+          })
+        );
+
+        console.log("Cart Item Data:", cartItemData);
+        setCartItems(cartItemData);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchProductData();
+  }, [context.cart]);
+
+  console.log("CartItems", cartItems);
 
   const handleQuantityChange = (id, quantity) => {
     setCartItems((prevItems) =>
@@ -25,6 +61,8 @@ const Checkout = () => {
     (total, item) => total + item.price * item.quantity,
     0
   );
+
+  const productIds = cartItems.map((item) => item.id);
 
   return (
     <div className="container mx-auto p-4 my-10">
@@ -47,13 +85,22 @@ const Checkout = () => {
           <tbody>
             {cartItems.map((item) => (
               <tr key={item.id} className="border border-spacing-2">
-                <div className="flex items-center m-2 py-4">
-                  <img src={item.image} className="w-8" />
-                  <td className="px-4 py-2 ">{item.name}</td>
-                </div>
+                <td className="flex items-center m-2 py-4">
+                  {item.photos.length > 0 && (
+                    // Check if photos array has at least one element
+                    <div className="flex justify-center items-center">
+                      <img
+                        src={`https://api.timbu.cloud/images/${item.photos[0].url}`} // Access the first element of photos
+                        alt={item.title}
+                        className="w-10 h-10 object-contain mx-auto"
+                      />
+                    </div>
+                  )}
+                  <span className="px-4 py-2 ">{item.name}</span>
+                </td>
                 <td className="px-4 py-2 ">${item.price}</td>
                 <td className="px-4 py-2 ">
-                  <div className="flex items-centerl">
+                  <div className="flex items-center">
                     <div className="flex flex-col md:flex-row border rounded-full">
                       <button
                         className="px-2"
@@ -72,7 +119,9 @@ const Checkout = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-4 py-2 ">${item.price * item.quantity}</td>
+                <td className="px-4 py-2 ">
+                  ${(item.price * item.quantity).toFixed(2)}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -80,11 +129,11 @@ const Checkout = () => {
       </div>
       <div className="mt-4 flex justify-between items-center">
         <Link to="/">
-          <button className=" p-2 border-2 hover:bg-gray-400 font-bold py-2 px-4 rounded">
+          <button className="p-2 border-2 hover:bg-gray-400 font-bold py-2 px-4 rounded">
             Return Home
           </button>
         </Link>
-        <button className="border-2 p-2 hover:bg-gray-400 font-bold  px-4 ">
+        <button className="border-2 p-2 hover:bg-gray-400 font-bold px-4 ">
           Update Cart
         </button>
       </div>
@@ -93,7 +142,7 @@ const Checkout = () => {
           <input
             type="text"
             placeholder="Enter coupon code"
-            className="w-full px-4 py-2  rounded mb-2 md:mb-0"
+            className="w-full px-4 py-2 rounded mb-2 md:mb-0"
           />
           <button
             onClick={handleCouponApply}
@@ -118,7 +167,11 @@ const Checkout = () => {
               <span>${cartTotal}</span>
             </div>
           </div>
-          <Link to="/main" className="flex justify-end">
+          <Link
+            to="/main"
+            state={{ productIds, totalAmount: cartTotal }}
+            className="flex justify-end"
+          >
             <button className="w-[50%] bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded mt-4">
               Proceed to Checkout
             </button>

@@ -1,19 +1,55 @@
-import { Link } from "react-router-dom";
-import iphone from "../assets/image/iphone.webp";
-import earphone from "../assets/image/headphone.webp";
-import usb from "../assets/image/usb.webp";
-import perfume from "../assets/image/perfume.webp";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useOutlet, useOutletContext } from "react-router-dom";
 
-const Card = ({ image, title, brand, rating, price, originalPrice, label }) => {
+const Card = ({
+  id,
+  photos,
+  title,
+  brand,
+  rating,
+  price,
+  originalPrice,
+  label,
+  name,
+}) => {
+  const context = useOutletContext();
+
+  const addToCart = () => {
+    context.setCart([...context.cart, id]);
+    console.log(context.cart);
+  };
+
+  const getPrice = () => {
+    if (price && price.length > 0 && price[0].ETB && price[0].ETB.length > 0) {
+      return price[0].ETB[0]; // Assuming ETB is the currency and accessing the first price in the array
+    }
+    return "Price not specified"; // Fallback if price information is not available
+  };
+
   return (
     <div className="w-full sm:w-1/2 lg:w-1/4 p-2">
       <div className="shadow-lg rounded-lg mb-2">
         <div className="bg-[#D9D9D9] p-4 sm:p-2 flex justify-center pt-3 rounded-t-lg">
-          <img src={image} alt={title} className="w-60 h-60 object-contain" />
+          {photos.length > 0 ? (
+            <Link to={`/product/${id}`}>
+              <img
+                src={`https://api.timbu.cloud/images/${photos[0].url}`}
+                alt={name}
+                className="w-60 h-60 object-contain"
+              />
+            </Link>
+          ) : (
+            <Link to={`/product/${id}`}>
+              <div className="w-60 h-60 bg-gray-200 flex items-center justify-center text-gray-400">
+                No Image
+              </div>
+            </Link>
+          )}
         </div>
         <div className="p-5">
           <p className="mb-1 font-semibold">{title}</p>
-          <p>{brand}</p>
+          <p className="font-semibold">{name}</p>
           <div className="flex items-center justify-between">
             <div>
               <div className="flex gap-2 items-center">
@@ -31,16 +67,17 @@ const Card = ({ image, title, brand, rating, price, originalPrice, label }) => {
                 <p className="border-r-[1px] pr-1.5 border-gray-400">
                   {rating}
                 </p>
-                {label && (
+                {brand && (
                   <div className="text-xs bg-gray-200 text-gray-500 px-3 py-1 rounded-full">
-                    {label}
+                    {brand}
                   </div>
                 )}
               </div>
             </div>
             <div>
-              <Link to="/checkout">
+              <div>
                 <svg
+                  onClick={() => addToCart(id)}
                   className="w-[48px] h-[48px] text-gray-800"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
@@ -55,14 +92,14 @@ const Card = ({ image, title, brand, rating, price, originalPrice, label }) => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </Link>
+              </div>
             </div>
           </div>
           <div className="flex gap-4">
             {originalPrice && (
               <p className="line-through text-gray-400">{originalPrice}</p>
             )}
-            <p>{price}</p>
+            <p>{getPrice()} ETB</p>
           </div>
         </div>
       </div>
@@ -71,113 +108,29 @@ const Card = ({ image, title, brand, rating, price, originalPrice, label }) => {
 };
 
 const AllProducts = () => {
-  const products = [
-    {
-      image: iphone,
-      title: "iPhone 15 Pro Max",
-      brand: "Oraimo",
-      rating: "4.5",
-      price: "9,999",
-      originalPrice: "10,599",
-      label: "New arrival",
-    },
-    {
-      image: earphone,
-      title: "Headphone meagasound",
-      brand: "Beats",
-      rating: "4.3",
-      price: "2, 000",
-      originalPrice: "2,599",
-      label: "Best seller",
-    },
-    {
-      image: usb,
-      title: "San Disk",
-      brand: "San Disk",
-      rating: "4.6",
-      price: "1,9",
-      originalPrice: "2,9",
-    },
-    {
-      image: perfume,
-      title: "Ralph Lauren men",
-      brand: "Ralph Lauren",
-      rating: "4.5",
-      price: "4, 99",
-      originalPrice: "7,99",
-      label: "Discount",
-    },
-    {
-      image: iphone,
-      title: "iPhone 15 Pro Max",
-      brand: "Oraimo",
-      rating: "4.5",
-      price: "9,999",
-      originalPrice: "10,599",
-      label: "New arrival",
-    },
-    {
-      image: earphone,
-      title: "Headphone 14",
-      brand: "Beats",
-      rating: "4.3",
-      price: "2, 000",
-      originalPrice: "2,599",
-      label: "Best seller",
-    },
-    {
-      image: usb,
-      title: "cannon 2",
-      brand: "Cannon",
-      rating: "4.6",
-      price: "1,999",
-      originalPrice: "2,599",
-    },
-    {
-      image: perfume,
-      title: "Ralph Lauren men",
-      brand: "Ralph Lauren",
-      rating: "4.5",
-      price: "4, 99",
-      originalPrice: "7,99",
-      label: "Discount",
-    },
-    {
-      image: iphone,
-      title: "iPhone 15 Pro Max",
-      brand: "Oraimo",
-      rating: "4.5",
-      price: "9,999",
-      originalPrice: "10,599",
-      label: "New arrival",
-    },
-    {
-      image: earphone,
-      title: "Headphone 14",
-      brand: "Beats",
-      rating: "4.3",
-      price: "2, 000",
-      originalPrice: "2,599",
-      label: "Best seller",
-    },
-    {
-      image: usb,
-      title: "cannon 2",
-      brand: "Cannon",
-      rating: "4.6",
-      price: "1,999",
-      originalPrice: "2,599",
-    },
-    {
-      image: perfume,
-      title: "Ralph Lauren men",
-      brand: "Ralph Lauren",
-      rating: "4.5",
-      price: "4, 99",
-      originalPrice: "7,99",
-      label: "Discount",
-    },
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(
+          `/api/products?organization_id=${
+            import.meta.env.VITE_ORG_ID
+          }&reverse_sort=false&page=1&size=10&Appid=${
+            import.meta.env.VITE_APP_ID
+          }&Apikey=${import.meta.env.VITE_API_KEY}`
+        );
+        console.log(response);
+        const data = response.data; // Axios response data is already parsed
+        setProducts(data.items); // Adjust the path according to the actual response structure
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+  console.log(products);
 
   return (
     <div className="px-4 md:px-11 my-10">
@@ -188,13 +141,14 @@ const AllProducts = () => {
         {products.map((product, index) => (
           <Card
             key={index}
-            image={product.image}
-            title={product.title}
-            brand={product.brand}
-            rating={product.rating}
-            price={product.price}
-            originalPrice={product.originalPrice}
-            label={product.label}
+            id={product.id}
+            photos={product.photos} // Replace with actual image field if available
+            name={product.name}
+            description={product.description}
+            unique_id={product.unique_id}
+            url_slug={product.url_slug}
+            is_available={product.is_available}
+            price={product.current_price}
           />
         ))}
       </div>

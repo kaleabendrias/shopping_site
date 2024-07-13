@@ -6,6 +6,12 @@ import Checkoutmain from "./pages/Checkoutmain";
 import Shop from "./pages/Shop";
 import PaymentSuccess from "./pages/Paymentsuccess";
 import Custom404 from "./pages/Custom404";
+import SingleProduct from "./pages/SingleProduct";
+import Electronics from "./pages/Electronics";
+import Sports from "./pages/Sports";
+import Cloths from "./pages/Cloths";
+import Toys from "./pages/Toys";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +43,30 @@ const router = createBrowserRouter([
       {
         path: "/paymentsuccess",
         element: <PaymentSuccess />,
+      },
+      {
+        path: "/product/:id",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/products/electronics",
+        element: <Electronics />,
+      },
+      {
+        path: "/products/sports",
+        element: <Sports />,
+      },
+      {
+        path: "/products/cloths",
+        element: <Cloths />,
+      },
+      {
+        path: "/products/toys",
+        element: <Toys />,
+      },
+      {
+        path: "/products/home",
+        element: <Home />,
       },
       {
         path: "*",

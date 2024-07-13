@@ -1,9 +1,40 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 import visa from "../assets/image/visa.png";
-import headphone from "../assets/image/headphone.webp";
-import perfume from "../assets/image/perfume.webp";
 
 const Checkoutmain = () => {
+  const location = useLocation();
+  const { productIds = [], totalAmount = 0 } = location.state || {};
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        const productData = await Promise.all(
+          productIds.map(async (productId) => {
+            const response = await axios.get(
+              `/api/products/${productId}?organization_id=${
+                import.meta.env.VITE_ORG_ID
+              }&Appid=${import.meta.env.VITE_APP_ID}&Apikey=${
+                import.meta.env.VITE_API_KEY
+              }`
+            );
+            return response.data;
+          })
+        );
+        setProducts(productData);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchProductData();
+  }, [productIds]);
+
+  console.log("Products: ", products, " and total amount: ", totalAmount);
+
   return (
     <div className="px-5 md:px-11 mb-20">
       <div className="mx-auto p-4">
@@ -100,24 +131,28 @@ const Checkoutmain = () => {
             </form>
           </div>
           <div className="md:w-1/3 mt-10 md:mt-0 md:pl-10">
-            <div className=" md:p-6 rounded-md">
-              <div className="flex justify-between items-center mb-4 mt-11">
-                <div className="flex justify-center items-center space-x-2 ">
-                  <img src={perfume} className="w-10" />
-                  <span className="text-lg font-medium">prefume</span>
+            <div className="md:p-6 rounded-md">
+              {products.map((product) => (
+                <div
+                  className="flex justify-between items-center mb-4 mt-11"
+                  key={product.id}
+                >
+                  <div className="flex justify-center items-center space-x-2">
+                    {product.photos.length > 0 && (
+                      <img
+                        src={`https://api.timbu.cloud/images/${product.photos[0].url}`}
+                        className="w-10 h-10 object-contain"
+                        alt={product.name}
+                      />
+                    )}
+                    <span className="text-lg font-medium">{product.name}</span>
+                  </div>
+                  {/* <span className="text-lg font-medium">${product.price}</span> */}
                 </div>
-                <span className="text-lg font-medium">$500.00</span>
-              </div>
-              <div className="flex justify-between items-center mb-4">
-                <div className="flex justify-center items-center space-x-2">
-                  <img src={headphone} className="w-10" />
-                  <span className="text-lg font-medium">Earpods</span>
-                </div>
-                <span className="text-lg font-medium">$250.00</span>
-              </div>
+              ))}
               <div className="flex justify-between items-center mb-4 border-b-2">
                 <span className="text-lg font-medium">Amount</span>
-                <span className="text-lg font-medium">$750.00</span>
+                <span className="text-lg font-medium">${totalAmount}</span>
               </div>
               <div className="flex justify-between items-center mb-4 border-b-2">
                 <span className="text-lg font-medium">Shipping fee</span>
@@ -125,7 +160,7 @@ const Checkoutmain = () => {
               </div>
               <div className="flex justify-between items-center mb-6">
                 <span className="text-xl font-semibold">Total</span>
-                <span className="text-xl font-semibold">$750.00</span>
+                <span className="text-xl font-semibold">${totalAmount}</span>
               </div>
               <div className="flex items-center mb-6">
                 <input
@@ -148,7 +183,7 @@ const Checkoutmain = () => {
                     Pay with card
                   </label>
                 </div>
-                <img src={visa} className="w-20 " />
+                <img src={visa} className="w-20" alt="Visa" />
               </div>
               <div className="space-y-4 text-slate-700">
                 <div>

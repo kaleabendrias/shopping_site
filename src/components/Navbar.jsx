@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import image1 from "../assets/image/image1.svg";
 import image2 from "../assets/image/image2.svg";
 import image3 from "../assets/image/image3.svg";
@@ -7,6 +7,7 @@ import downArrow from "../assets/image/down-arrow.png";
 import cartIcon from "../assets/image/carticon.png";
 
 const Navbar = () => {
+  const context = useOutletContext();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const [isCategoriesMenuOpen, setIsCategoriesMenuOpen] = useState(false);
@@ -101,9 +102,11 @@ const Navbar = () => {
               )}
             </div>
           </div>
-          <Link to="/checkout">
-            <img src={cartIcon} className="w-6 h-6" alt="Cart" />
-          </Link>
+          <div className="flex items-center">
+            <Link to="/checkout">
+              <img src={cartIcon} className="w-7 h-6" alt="Cart" />
+            </Link>
+          </div>
 
           <div className="hidden md:flex gap-6">
             <div className="cursor-pointer">
@@ -155,19 +158,34 @@ const Navbar = () => {
             {isCategoriesMenuOpen && (
               <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
                 <div className="flex flex-col text-black">
-                  <Link to="/shop" className="py-2 px-4 hover:bg-gray-100">
+                  <Link
+                    to="/products/electronics"
+                    className="py-2 px-4 hover:bg-gray-100"
+                  >
                     Electronics
                   </Link>
-                  <Link to="/shop" className="py-2 px-4 hover:bg-gray-100">
+                  <Link
+                    to="/products/cloths"
+                    className="py-2 px-4 hover:bg-gray-100"
+                  >
                     Clothing
                   </Link>
-                  <Link to="/shop" className="py-2 px-4 hover:bg-gray-100">
-                    Home & Garden
+                  <Link
+                    to="/products/home"
+                    className="py-2 px-4 hover:bg-gray-100"
+                  >
+                    Office & Home
                   </Link>
-                  <Link to="/shop" className="py-2 px-4 hover:bg-gray-100">
+                  <Link
+                    to="/products/sports"
+                    className="py-2 px-4 hover:bg-gray-100"
+                  >
                     Sports
                   </Link>
-                  <Link to="/shop" className="py-2 px-4 hover:bg-gray-100">
+                  <Link
+                    to="/products/toys"
+                    className="py-2 px-4 hover:bg-gray-100"
+                  >
                     Toys
                   </Link>
                 </div>
