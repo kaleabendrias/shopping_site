@@ -69,7 +69,7 @@ const Card = ({
               <div>
                 <svg
                   onClick={() => addToCart(id)}
-                  className="w-[48px] h-[48px] text-gray-800 cursor-pointer"
+                  className="w-12 h-12 text-gray-800 cursor-pointer transition duration-300 ease-in-out transform hover:scale-110"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
