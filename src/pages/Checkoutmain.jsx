@@ -8,7 +8,6 @@ const Checkoutmain = () => {
   const { productIds = [], totalAmount = 0 } = location.state || {};
 
   const [products, setProducts] = useState([]);
-  const proxyURL = "https://cors-anywhere.herokuapp.com/";
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -16,7 +15,7 @@ const Checkoutmain = () => {
         const productData = await Promise.all(
           productIds.map(async (productId) => {
             const response = await axios.get(
-              `${proxyURL}https://api.timbu.cloud/products/${productId}?organization_id=${
+              `https://timbu-get-single-product.reavdev.workers.dev/${productId}?organization_id=${
                 import.meta.env.VITE_ORG_ID
               }&Appid=${import.meta.env.VITE_APP_ID}&Apikey=${
                 import.meta.env.VITE_API_KEY

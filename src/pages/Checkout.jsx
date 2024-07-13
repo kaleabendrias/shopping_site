@@ -5,7 +5,6 @@ import axios from "axios";
 const Checkout = () => {
   const [cartItems, setCartItems] = useState([]);
   const context = useOutletContext();
-  const proxyURL = "https://cors-anywhere.herokuapp.com/";
 
   const generateRandomPrice = () => {
     return (
@@ -20,7 +19,7 @@ const Checkout = () => {
         const cartItemData = await Promise.all(
           context.cart.map(async (cartItem) => {
             const response = await axios.get(
-              `${proxyURL}https://api.timbu.cloud/products/${
+              `https://timbu-get-single-product.reavdev.workers.dev/${
                 cartItem.id
               }?organization_id=${import.meta.env.VITE_ORG_ID}&Appid=${
                 import.meta.env.VITE_APP_ID

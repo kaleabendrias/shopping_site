@@ -1,42 +1,56 @@
-import iphone from "../assets/image/iphone.webp";
-import earphone from "../assets/image/headphone.webp";
-import usb from "../assets/image/usb.webp";
-import perfume from "../assets/image/perfume.webp";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-const categories = [
-  { name: "iPhone", image: iphone },
-  { name: "earphone", image: earphone },
-  { name: "perfume", image: perfume },
-  { name: "iPhone", image: iphone },
-  { name: "Usb", image: usb },
-  { name: "earphone", image: earphone },
-  { name: "perfume", image: perfume },
-  { name: "usb", image: usb },
-  { name: "iPhone", image: iphone },
-  { name: "earphone", image: earphone },
-  { name: "perfume", image: perfume },
-  { name: "iPhone", image: iphone },
-];
+import axios from "axios";
 
 const Popular = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(
+          `https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${
+            import.meta.env.VITE_ORG_ID
+          }&reverse_sort=false&page=1&size=10&Appid=${
+            import.meta.env.VITE_APP_ID
+          }&Apikey=${import.meta.env.VITE_API_KEY}`
+        );
+        setProducts(response.data.items.slice(0, 8)); // Get the first 8 products
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <div className="mt-11 md:mt-0 px-11">
       <p className="text-3xl font-bold pb-10">Popular categories</p>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 mb-5">
-        {categories.map((category, index) => (
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-5">
+        {products.map((product, index) => (
           <div
             key={index}
             className="bg-[#D9D9D9] flex flex-col gap-3 items-center p-3"
           >
-            <Link to="/shop" className="px-2">
-              <img
-                src={category.image}
-                className="w-full h-40 object-contain"
-                alt={category.name}
-              />
+            <Link to={`/shop/${product.id}`} className="px-2">
+              {product.photos.length > 0 ? (
+                <Link to={`/product/${product.id}`}>
+                  <img
+                    src={`https://api.timbu.cloud/images/${product.photos[0].url}`}
+                    alt={name}
+                    className="w-60 h-60 object-contain"
+                  />
+                </Link>
+              ) : (
+                <Link to={`/product/${product.id}`}>
+                  <div className="w-60 h-60 bg-gray-200 flex items-center justify-center text-gray-400">
+                    No Image
+                  </div>
+                </Link>
+              )}
             </Link>
-            <p className="font-semibold">{category.name}</p>
+            <p className="font-semibold">{product.name}</p>
           </div>
         ))}
       </div>

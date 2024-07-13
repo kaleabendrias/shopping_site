@@ -109,12 +109,11 @@ const Toys = () => {
       let allProducts = [];
       let currentPage = 1;
       const totalPages = 3; // Adjust as necessary or determine dynamically if possible
-      const proxyURL = "https://cors-anywhere.herokuapp.com/";
 
       try {
         while (currentPage <= totalPages) {
           const response = await axios.get(
-            `${proxyURL}https://api.timbu.cloud/products?organization_id=${
+            `https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${
               import.meta.env.VITE_ORG_ID
             }&reverse_sort=false&page=${currentPage}&size=10&Appid=${
               import.meta.env.VITE_APP_ID
