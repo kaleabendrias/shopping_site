@@ -102,6 +102,7 @@ const Cloths = () => {
   const context = useOutletContext();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const proxyURL = "https://cors-anywhere.herokuapp.com/";
 
   useEffect(() => {
     const fetchAllProducts = async () => {
@@ -113,7 +114,7 @@ const Cloths = () => {
       try {
         while (currentPage <= totalPages) {
           const response = await axios.get(
-            `/api/products?organization_id=${
+            `${proxyURL}https://api.timbu.cloud/products?organization_id=${
               import.meta.env.VITE_ORG_ID
             }&reverse_sort=false&page=${currentPage}&size=10&Appid=${
               import.meta.env.VITE_APP_ID

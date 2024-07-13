@@ -8,6 +8,7 @@ const Checkoutmain = () => {
   const { productIds = [], totalAmount = 0 } = location.state || {};
 
   const [products, setProducts] = useState([]);
+  const proxyURL = "https://cors-anywhere.herokuapp.com/";
 
   useEffect(() => {
     const fetchProductData = async () => {
