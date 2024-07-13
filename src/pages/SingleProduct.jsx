@@ -78,7 +78,7 @@ const SingleProduct = () => {
   };
 
   return (
-    <div className="max-w-6xl mt-11 mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-5xl mt-11 mx-auto p-6 bg-white rounded-lg shadow-md">
       <h1 className="text-3xl font-bold text-center mb-4">{product.name}</h1>
       <Slider {...settings}>
         {product.photos.length > 0 ? (
@@ -119,8 +119,9 @@ const SingleProduct = () => {
             {product.label}
           </p>
         )}
-        <p className=" mt-2 px-3 py-1 text-black rounded-full">
-          <span>Desription</span> {product.description}
+        <p className=" mt-2 px-3 py-1 text-black rounded-full text-md">
+          <span className="block font-semibold mb-2">Description</span>{" "}
+          {product.description}
         </p>
         <button
           className="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300"
