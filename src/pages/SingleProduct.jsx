@@ -10,7 +10,6 @@ const SingleProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-  const proxyURL = "https://cors-anywhere.herokuapp.com/";
 
   const generateRandomPrice = () => {
     return (
@@ -35,7 +34,7 @@ const SingleProduct = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `${proxyURL}https://api.timbu.cloud/products/${id}?organization_id=${
+          `https://timbu-get-single-product.reavdev.workers.dev/${id}?organization_id=${
             import.meta.env.VITE_ORG_ID
           }&Appid=${import.meta.env.VITE_APP_ID}&Apikey=${
             import.meta.env.VITE_API_KEY
