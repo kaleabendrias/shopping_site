@@ -123,7 +123,7 @@ const AllProducts = () => {
         );
         console.log(response);
         const data = response.data; // Axios response data is already parsed
-        setProducts(data.items); // Adjust the path according to the actual response structure
+        setProducts(data.items.slice(0, 8)); // Adjust the path according to the actual response structure
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -136,7 +136,7 @@ const AllProducts = () => {
   return (
     <div className="px-4 md:px-11 my-10">
       <div>
-        <p className="text-3xl font-bold mb-6">All Products</p>
+        <p className="text-3xl font-bold mb-6">Over view</p>
       </div>
       <div className="flex flex-wrap -mx-2">
         {products.map((product, index) => (
