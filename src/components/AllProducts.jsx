@@ -109,12 +109,13 @@ const Card = ({
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
+  const proxyURL = "https://cors-anywhere.herokuapp.com/";
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `/api/products?organization_id=${
+          `${proxyURL}https://api.timbu.cloud/products?organization_id=${
             import.meta.env.VITE_ORG_ID
           }&reverse_sort=false&page=1&size=10&Appid=${
             import.meta.env.VITE_APP_ID
