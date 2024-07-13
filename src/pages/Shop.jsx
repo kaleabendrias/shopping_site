@@ -68,7 +68,7 @@ const Card = ({
             <div>
               <div>
                 <svg
-                  onClick={() => addToCart(id)}
+                  onClick={() => addToCart(id, name)} // Pass product name to addToCart
                   className="w-12 h-12 text-gray-800 cursor-pointer transition duration-300 ease-in-out transform hover:scale-110"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
@@ -98,11 +98,20 @@ const Card = ({
   );
 };
 
+const Popup = ({ message }) => {
+  return (
+    <div className="fixed top-4 right-4 border-md bg-gray-800 text-white px-4 py-2 rounded shadow-lg">
+      {message}
+    </div>
+  );
+};
+
 const AllProducts = () => {
   const context = useOutletContext();
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [popup, setPopup] = useState({ show: false, message: "" }); // State for popup
   const totalPages = 3;
 
   useEffect(() => {
@@ -129,13 +138,20 @@ const AllProducts = () => {
     fetchProducts();
   }, [currentPage]);
 
-  const addToCart = (productId) => {
+  const addToCart = (productId, productName) => {
     const itemExists = context.cart.some(
       (cartItem) => cartItem.id === productId
     );
 
     if (!itemExists) {
       context.setCart([...context.cart, { id: productId, quantity: 1 }]);
+      setPopup({
+        show: true,
+        message: `${productName} has been added to the cart!`,
+      }); // Show popup
+      setTimeout(() => {
+        setPopup({ show: false, message: "" });
+      }, 3000); // Hide popup after 3 seconds
     }
 
     console.log(context.cart);
@@ -216,6 +232,8 @@ const AllProducts = () => {
           </div>
         </>
       )}
+      {popup.show && <Popup message={popup.message} />}{" "}
+      {/* Render popup if show is true */}
     </div>
   );
 };
