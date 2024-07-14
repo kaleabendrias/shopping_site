@@ -15,14 +15,12 @@ const SingleProduct = () => {
     return (
       Math.floor((Math.random() * (100000 - 10000)) / 1000) * 1000 +
       10000
-    ).toFixed(2); // Generates a random price between 10,000 and 100,000 in increments of 1000
+    ).toFixed(2);
   };
 
   const addToCart = () => {
-    // Check if the item is already in the cart
     const itemExists = context.cart.some((cartItem) => cartItem.id === id);
 
-    // If the item is not in the cart, add it
     if (!itemExists) {
       context.setCart([...context.cart, { id, quantity: 1 }]);
     }
@@ -42,7 +40,7 @@ const SingleProduct = () => {
         );
         console.log("this", response);
         const data = response.data;
-        setProduct(data); // Assuming the API response contains the entire product object
+        setProduct(data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -55,11 +53,36 @@ const SingleProduct = () => {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-64">
+        <svg
+          className="animate-spin h-16 w-16 text-gray-500"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          ></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+          ></path>
+        </svg>
+      </div>
+    );
   }
 
   if (!product) {
-    return <div>Product not found</div>;
+    return (
+      <div className="text-center text-xl font-semibold">Product not found</div>
+    );
   }
 
   console.log("product", product);
@@ -79,7 +102,7 @@ const SingleProduct = () => {
 
   return (
     <div className="max-w-5xl mt-11 mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-3xl font-bold text-center mb-4">{product.name}</h1>
+      <h1 className="text-4xl font-bold text-center mb-6">{product.name}</h1>
       <Slider {...settings}>
         {product.photos.length > 0 ? (
           product.photos.map((photo, index) => (
@@ -106,8 +129,7 @@ const SingleProduct = () => {
           <strong>Available quantities:</strong> {product.available_quantity}
         </p>
         <p className="text-lg">
-          {/* <strong>Price:</strong> ${product.current_price || 0} */}
-          <strong>Price:</strong> ${generateRandomPrice()}
+          <strong>Price:</strong> {generateRandomPrice()} ETB
         </p>
         {product.originalPrice && (
           <p className="text-lg">
@@ -115,16 +137,16 @@ const SingleProduct = () => {
           </p>
         )}
         {product.label && (
-          <p className=" mt-2 px-3 py-1 bg-green-500 text-white rounded-full">
+          <p className="mt-2 px-3 py-1 bg-green-500 text-white rounded-full">
             {product.label}
           </p>
         )}
-        <p className=" mt-2 px-3 py-1 text-black rounded-full text-md">
-          <span className="block font-semibold mb-2">Description</span>{" "}
+        <p className="mt-4 text-md text-gray-700">
+          <span className="block font-semibold mb-2">Description</span>
           {product.description}
         </p>
         <button
-          className="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300"
+          className="mt-6 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300"
           onClick={() => addToCart(id)}
         >
           Add to cart

@@ -12,6 +12,7 @@ import Sports from "./pages/Sports";
 import Cloths from "./pages/Cloths";
 import Toys from "./pages/Toys";
 import Home from "./pages/Home";
+import SuppliersPage from "./pages/Suppliers";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/paymentsuccess",
         element: <PaymentSuccess />,
+      },
+      {
+        path: "/suppliers",
+        element: <SuppliersPage />,
       },
       {
         path: "/product/:id",

@@ -2,6 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 
+const getRandomRating = () => {
+  return (Math.random() * (5 - 3) + 3).toFixed(1);
+};
+
 const Card = ({
   id,
   photos,
@@ -14,9 +18,9 @@ const Card = ({
 }) => {
   const getPrice = () => {
     if (price && price.length > 0 && price[0].ETB && price[0].ETB.length > 0) {
-      return price[0].ETB[0]; // Assuming ETB is the currency and accessing the first price in the array
+      return price[0].ETB[0];
     }
-    return "Price not specified"; // Fallback if price information is not available
+    return "Price not specified";
   };
 
   return (
@@ -68,7 +72,7 @@ const Card = ({
             <div>
               <div>
                 <svg
-                  onClick={() => addToCart(id, name)} // Pass product name to addToCart
+                  onClick={() => addToCart(id, name)}
                   className="w-12 h-12 text-gray-800 cursor-pointer transition duration-300 ease-in-out transform hover:scale-110"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +104,7 @@ const Card = ({
 
 const Popup = ({ message }) => {
   return (
-    <div className="fixed top-4 right-4 border-md bg-gray-800 text-white px-4 py-2 rounded shadow-lg">
+    <div className="fixed top-4 font-semibold shadow-2xl text-xl right-4 border-md bg-gray-900 text-white px-4 py-2 rounded">
       {message}
     </div>
   );
@@ -111,7 +115,7 @@ const AllProducts = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [popup, setPopup] = useState({ show: false, message: "" }); // State for popup
+  const [popup, setPopup] = useState({ show: false, message: "" });
   const totalPages = 3;
 
   useEffect(() => {
@@ -127,7 +131,11 @@ const AllProducts = () => {
         );
         console.log(`Fetched page ${currentPage}:`, response.data);
         const data = response.data;
-        setProducts(data.items);
+        const updatedData = data.items.map((item) => ({
+          ...item,
+          rating: getRandomRating(),
+        }));
+        setProducts(updatedData);
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -149,10 +157,16 @@ const AllProducts = () => {
         show: true,
         message: `${productName} has been added to the cart!`,
       }); // Show popup
-      setTimeout(() => {
-        setPopup({ show: false, message: "" });
-      }, 3000); // Hide popup after 3 seconds
+    } else {
+      setPopup({
+        show: true,
+        message: "Item already in cart",
+      });
     }
+
+    setTimeout(() => {
+      setPopup({ show: false, message: "" });
+    }, 3000);
 
     console.log(context.cart);
   };
@@ -233,7 +247,6 @@ const AllProducts = () => {
         </>
       )}
       {popup.show && <Popup message={popup.message} />}{" "}
-      {/* Render popup if show is true */}
     </div>
   );
 };

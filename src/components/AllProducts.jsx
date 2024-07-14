@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link, useOutlet, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
 const Card = ({
   id,
@@ -22,9 +22,9 @@ const Card = ({
 
   const getPrice = () => {
     if (price && price.length > 0 && price[0].ETB && price[0].ETB.length > 0) {
-      return price[0].ETB[0]; // Assuming ETB is the currency and accessing the first price in the array
+      return price[0].ETB[0];
     }
-    return "Price not specified"; // Fallback if price information is not available
+    return "Price not specified";
   };
 
   return (
@@ -74,26 +74,6 @@ const Card = ({
                 )}
               </div>
             </div>
-            <div>
-              <div>
-                <svg
-                  onClick={() => addToCart(id)}
-                  className="w-12 h-12 text-gray-800 cursor-pointer transition duration-300 ease-in-out transform hover:scale-110"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
           </div>
           <div className="flex gap-4">
             {originalPrice && (
@@ -109,7 +89,7 @@ const Card = ({
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
-  // const proxyURL = "https://cors-anywhere.herokuapp.com/";
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -122,37 +102,63 @@ const AllProducts = () => {
           }&Apikey=${import.meta.env.VITE_API_KEY}`
         );
         console.log(response);
-        const data = response.data; // Axios response data is already parsed
-        setProducts(data.items.slice(0, 8)); // Adjust the path according to the actual response structure
+        const data = response.data;
+        setProducts(data.items.slice(0, 8));
       } catch (error) {
         console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProducts();
   }, []);
-  console.log(products);
 
   return (
     <div className="px-4 md:px-11 my-10">
       <div>
-        <p className="text-3xl font-bold mb-6">Over view</p>
+        <p className="text-3xl font-bold mb-6">Overview</p>
       </div>
-      <div className="flex flex-wrap -mx-2">
-        {products.map((product, index) => (
-          <Card
-            key={index}
-            id={product.id}
-            photos={product.photos} // Replace with actual image field if available
-            name={product.name}
-            description={product.description}
-            unique_id={product.unique_id}
-            url_slug={product.url_slug}
-            is_available={product.is_available}
-            price={product.current_price}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <div className="flex justify-center items-center h-64">
+          <svg
+            className="animate-spin h-8 w-8 text-gray-700"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+            ></path>
+          </svg>
+        </div>
+      ) : (
+        <div className="flex flex-wrap -mx-2">
+          {products.map((product, index) => (
+            <Card
+              key={index}
+              id={product.id}
+              photos={product.photos}
+              name={product.name}
+              description={product.description}
+              unique_id={product.unique_id}
+              url_slug={product.url_slug}
+              is_available={product.is_available}
+              price={product.current_price}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

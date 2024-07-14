@@ -201,7 +201,9 @@ const Navbar = () => {
           <Link to="/checkout">
             <div className="self-stretch my-auto">CHECKOUT</div>
           </Link>
-          <div className="self-stretch my-auto">SUPPLIERS</div>
+          <Link to="/suppliers">
+            <div className="self-stretch my-auto">SUPPLIERS</div>
+          </Link>
         </div>
       </div>
     </>
